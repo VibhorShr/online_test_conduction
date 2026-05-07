@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Test Area | Online Test Conduction System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="student-page">
+    <header class="admin-header student-header">
+        <div>
+            <p class="eyebrow">Student</p>
+            <h1>Online Test Conduction System</h1>
+        </div>
+        <div class="top-analog-timer" id="topAnalogTimer" aria-hidden="true">
+            <div class="analog-timer" aria-hidden="true">
+                <span class="clock-mark top">12</span>
+                <span class="clock-mark right">3</span>
+                <span class="clock-mark bottom">6</span>
+                <span class="clock-mark left">9</span>
+                <span class="clock-hand minute-hand" id="timerMinuteHand"></span>
+                <span class="clock-hand second-hand" id="timerSecondHand"></span>
+                <span class="clock-center"></span>
+            </div>
+        </div>
+        <nav class="admin-nav">
+            <a href="/">Logout</a>
+        </nav>
+    </header>
+
+    <main class="student-main">
+        <section class="student-topbar">
+            <div>
+                <p class="eyebrow dark">Welcome</p>
+                <h2 id="studentName">Student</h2>
+            </div>
+            <p>Attempt available tests and view your score instantly after submission.</p>
+        </section>
+
+        <section class="student-layout">
+            <aside class="student-sidebar">
+                <div class="section-heading">
+                    <h2>Available Tests</h2>
+                    <p>Select one test to begin.</p>
+                </div>
+                <div id="studentTestList" class="student-test-list"></div>
+            </aside>
+
+            <section id="attemptArea" class="attempt-area" aria-live="polite"></section>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

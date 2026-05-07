@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Test Conduction System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="auth-page">
+    <header class="auth-header">
+        <div>
+            <p class="eyebrow">Secure Examination Portal</p>
+            <h1>Online Test Conduction System</h1>
+            
+        </div>
+    </header>
+
+    <main id="main-content" class="auth-main">
+        <section class="auth-shell">
+            <div class="auth-card">
+                <div class="auth-tabs" role="tablist" aria-label="Authentication mode">
+                    <button type="button" class="auth-tab active" data-auth-mode="login">Sign In</button>
+                    <button type="button" class="auth-tab" data-auth-mode="register">Create Account</button>
+                </div>
+
+                <div class="role-toggle" aria-label="Account type">
+                    <label>
+                        <input type="radio" name="authRole" value="student" checked>
+                        <span>Student</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="authRole" value="admin">
+                        <span>Admin</span>
+                    </label>
+                </div>
+
+                <form id="loginForm" class="auth-form">
+                    <div class="form-title">
+                        <h2>Welcome Back</h2>
+                        <p>Use your registered username or email.</p>
+                    </div>
+                    <label>
+                        Username or Email
+                        <input type="text" name="identifier" required autocomplete="username" placeholder="Enter username or email">
+                    </label>
+                    <label>
+                        Password
+                        <input type="password" name="password" required autocomplete="current-password" placeholder="Enter password">
+                    </label>
+                    <button type="submit">Sign In</button>
+                    <p id="loginMessage" class="form-message" aria-live="polite"></p>
+                </form>
+
+                <form id="registerForm" class="auth-form hidden">
+                    <div class="form-title">
+                        <h2>Create Account</h2>
+                        
+                    </div>
+                    <label>
+                        Full Name
+                        <input type="text" name="fullName" required autocomplete="name" placeholder="Enter full name">
+                    </label>
+                    <label>
+                        Username
+                        <input type="text" name="username" required autocomplete="username" placeholder="Choose username">
+                    </label>
+                    <label>
+                        Email
+                        <input type="email" name="email" required autocomplete="email" placeholder="Enter email">
+                    </label>
+                    <label>
+                        Password
+                        <input type="password" name="password" required autocomplete="new-password" minlength="6" placeholder="Minimum 6 characters">
+                    </label>
+                    <button type="submit">Create Account</button>
+                    <p id="registerMessage" class="form-message" aria-live="polite"></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

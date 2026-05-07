@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | Online Test Conduction System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="admin-page">
+    <header class="admin-header">
+        <div>
+            <p class="eyebrow">Administrator</p>
+            <h1>Online Test Conduction System</h1>
+        </div>
+        <div class="top-analog-timer admin-session-clock" aria-label="Session timer">
+            <div class="analog-timer" aria-hidden="true">
+                <span class="clock-mark top">12</span>
+                <span class="clock-mark right">3</span>
+                <span class="clock-mark bottom">6</span>
+                <span class="clock-mark left">9</span>
+                <span class="clock-hand minute-hand" id="adminTimerMinuteHand"></span>
+                <span class="clock-hand second-hand" id="adminTimerSecondHand"></span>
+                <span class="clock-center"></span>
+            </div>
+            <strong id="adminSessionTimer">00:00</strong>
+        </div>
+        <nav class="admin-nav">
+            <a href="/">Logout</a>
+        </nav>
+    </header>
+
+    <main class="admin-main">
+        <section class="dashboard-grid" aria-label="Dashboard summary">
+            <article class="metric-card">
+                <span>Total Tests</span>
+                <strong id="totalTests">0</strong>
+            </article>
+            <article class="metric-card">
+                <span>Questions</span>
+                <strong id="totalQuestions">0</strong>
+            </article>
+            <article class="metric-card">
+                <span>Attempts</span>
+                <strong id="totalAttempts">0</strong>
+            </article>
+            <article class="metric-card">
+                <span>Average Score</span>
+                <strong id="averageScore">0%</strong>
+            </article>
+        </section>
+
+        <section class="admin-workspace">
+            <div class="admin-panel">
+                <div class="panel-heading">
+                    <h2>Create Test</h2>
+                    <p>Set up test details for students.</p>
+                </div>
+                <form id="testForm" class="admin-form">
+                    <label>
+                        Test Title
+                        <input type="text" name="title" placeholder="Example: JavaScript Quiz" required>
+                    </label>
+                    <label>
+                        Subject
+                        <input type="text" name="subject" placeholder="Example: Web Technology" required>
+                    </label>
+                    <label>
+                        Time Limit
+                        <input type="number" name="duration" min="5" max="180" placeholder="Minutes" required>
+                    </label>
+                    <button type="submit">Create Test</button>
+                    <p id="testMessage" class="form-message" aria-live="polite"></p>
+                </form>
+
+                <div class="panel-divider"></div>
+
+                <div class="panel-heading compact">
+                    <h2>Set Session Time</h2>
+                    
+                </div>
+                <form id="sessionForm" class="admin-form session-form">
+                    <label>
+                        Select Test
+                        <select id="sessionTest" name="testId" required></select>
+                    </label>
+                    <label>
+                        Session Duration
+                        <input type="number" name="sessionDuration" min="1" placeholder="Enter minutes" required>
+                    </label>
+                    <div class="session-actions">
+                        <button type="submit">Start Session</button>
+                        <button type="button" id="endSession" class="secondary-button">End Session</button>
+                    </div>
+                    <p id="sessionMessage" class="form-message" aria-live="polite"></p>
+                </form>
+            </div>
+
+            <div class="admin-panel">
+                <div class="panel-heading">
+                    <h2>Add Question</h2>
+                    <p>Add multiple-choice questions to any test.</p>
+                </div>
+                <form id="questionForm" class="admin-form">
+                    <label>
+                        Select Test
+                        <select id="questionTest" name="testId" required></select>
+                    </label>
+                    <label>
+                        Question
+                        <textarea name="question" rows="3" placeholder="Enter question text" required></textarea>
+                    </label>
+                    <div class="option-grid">
+                        <label>
+                            Option A
+                            <input type="text" name="optionA" required>
+                        </label>
+                        <label>
+                            Option B
+                            <input type="text" name="optionB" required>
+                        </label>
+                        <label>
+                            Option C
+                            <input type="text" name="optionC" required>
+                        </label>
+                        <label>
+                            Option D
+                            <input type="text" name="optionD" required>
+                        </label>
+                    </div>
+                    <label>
+                        Correct Answer
+                        <select name="answer" required>
+                            <option value="">Select answer</option>
+                            <option value="A">Option A</option>
+                            <option value="B">Option B</option>
+                            <option value="C">Option C</option>
+                            <option value="D">Option D</option>
+                        </select>
+                    </label>
+                    <button type="submit">Add Question</button>
+                    <p id="questionMessage" class="form-message" aria-live="polite"></p>
+                </form>
+            </div>
+        </section>
+
+        <section class="table-section">
+            <div class="section-heading">
+                <h2>Available Tests</h2>
+                
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Subject</th>
+                            <th>Duration</th>
+                            <th>Questions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="testTableBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="table-section">
+            <div class="section-heading">
+                <h2>Student Results</h2>
+                
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student</th>
+                            <th>Test</th>
+                            <th>Score</th>
+                            <th>Completion Time</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultsTableBody"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
